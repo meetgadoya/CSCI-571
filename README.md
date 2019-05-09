@@ -20,16 +20,16 @@ Homework - 6
 
 This homework required us to use PHP and Javascript and create a webpage that allows us to search for products information using EBAY API, and the results will be displayed in tabular format.The page also provides more details for the selected product.
 
-Youtube Video:https://youtu.be/VtVYSgOwHbI
+Youtube Video:https://youtu.be/VtVYSgOwHbI (Reference video of what is been required to implement)
 
 Homework - 8 
 
 This homework required the use of Node.js, AngularJS, Amazon Web Services, Facebook API, Bootstrap, JQuery, JSON, HTML5 to build a webpage that displays events information, and deatails for a selected product. It involved the usage of EBAY API for Autocompletion and for getting events data in JSON format. We also made use of the HTML5 local storage to store event favourites, implement auto refresh and forced refresh functions for these saved events. This homework required us to make a Responsive Web Site (Using Bootstrap) that would automatically scale with the devices (Desktop, Mobile, Tablet).
 
-Youtube Video:https://youtu.be/5nNjz_Cux9w
+Youtube Video:https://youtu.be/5nNjz_Cux9w (Reference video of what is been required to implement)
 
 Homework - 9
 
 This homework required us to use Android to replicate the functionality of Homework - 8 in a mobile app. We were given the choice of an Android or an iOS app. I replicated the functionality in an Android app.
 
-Youtube Video:https://youtu.be/_RpseDGV6I8
+Youtube Video:https://youtu.be/_RpseDGV6I8 (Reference video of what is been required to implement)
