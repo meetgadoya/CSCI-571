@@ -1,0 +1,139 @@
+.error
+{
+    color:red
+}
+.row{
+    margin-right: 0 !important;
+    margin-left: 0 !important;
+}
+a:hover{
+    cursor: pointer;
+}
+.black .active{
+    background-color: black;
+}   
+.nav-tabs .nav-link:not(.active) {
+    background-color: white;
+    color:black;
+}
+
+
+/* active (faded) */
+.nav-tabs .nav-link.active {
+    background-color:black;
+    color: white;
+}
+
+.btn .btn-sm .btn-default.active{
+    background-color:black;
+    color:white;
+}
+
+.btn .btn-sm .btn-default:not(.active){
+    background-color:white;
+    color:black;
+}
+.nav-pills .nav-link.active {
+    background-color:black;
+    color: white;
+}
+.nav-pills .nav-link:not(.active) {
+    background-color: white;
+    color:black;
+}
+.itemselect{
+    background-color:grey !important;
+}
+
+.noRecords{
+    background: #FFF3CD;
+    color:#7D7048;
+    line-height: 40px;
+    border-radius: 5px;
+    margin: 75px 0;
+}
+.blackened-btn:hover{
+    background-color: black !important;
+    color:white;
+}
+.blackened-btn {
+    background-color: black;
+    color:white;
+}
+/* .move-left.ng-leave{
+    animation:slideOutLeft 0.5s both ease-in;
+} */
+@media (min-width: 200px) {
+    .related_small { display: inline-block;}
+    .similar_big {display:none; }
+    .nav>li>a{
+        padding:5px;
+    }
+}
+/* Responsive layout - makes the two columns stack on top of each other instead of next to each other */
+@media (min-width: 720px) {
+    .related_small { display: none;}
+    .similar_big {display:inline-block; }
+    .nav>li>a{
+        padding:0.5rem 1rem;
+    }
+
+}
+
+@keyframes slide-in {
+    0% { transform: translateX(-100%);opacity:0;}
+    100% { transform: translateX(0%);opacity:1;}
+}
+
+@-webkit-keyframes slide-in {
+    0% { transform: translateX(-100%);opacity:0;}
+    100% { transform: translateX(0%);opacity:1;}
+}
+
+.move-left.ng-hide-add{
+    position:absolute;
+    animation: slide-out 0.5s forwards !important;
+    -webkit-animation: slide-out 0.5s forwards !important;
+}
+
+.move-left.ng-hide-remove{
+    position:absolute;
+    animation: slide-in .5s forwards !important;
+    -webkit-animation: slide-in .5s forwards !important;
+}
+
+@keyframes slide-out {
+    0% { transform: translateX(0%); opacity:1;}
+    100% { transform: translateX(100%); opacity:1;}
+}
+
+@-webkit-keyframes slide-out {
+    0% { transform: translateX(0%); opacity:1;}
+    100% { transform: translateX(100%); opacity:1;}
+}
+.red{
+    border:solid 1px red !important;
+}
+/* .progress-wrapper{
+    position: relative;
+}
+
+.progress-wrapper .text{
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+    -webkit-transform: translateY(-50%);
+    text-align: center;
+    width: 100%;
+    z-index: 1;
+} */
+/* .black{
+    color:black;
+}
+a:active{
+    background-color: black;
+} */
+/* .nav-pills>li.active>a, .nav-pills>li.active>a:focus, .nav-pills>li>a.active {
+    background-color: black;
+} */

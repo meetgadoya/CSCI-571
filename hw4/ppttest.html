@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+input[name=URL]:focus {
+  border: 3px solid #add8f6;
+}
+</style>
+</head>
+<body style="text-align:center; padding-top: 150px">
+    <script type="application/javascript">
+
+    function viewJSON(what){
+        var URL = what.URL.value;  
+        
+        // if(!filename){
+        //     alert("Please enter filename.");
+        //     return;
+        // }
+        if(URL=="")
+        {
+            alert("Enter a filename");
+            return
+        }
+
+        function loadJSON(url) {
+            if (window.XMLHttpRequest)
+            {// code for IE7+, Firefox, Chrome, Opera, Safari
+                xmlhttp=new XMLHttpRequest();
+            } 
+            else 
+            {// code for IE6, IE5
+                xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");  
+            }
+            xmlhttp.open("GET",url,false); // "synchronous"
+            try{
+            xmlhttp.send();
+            // if(xmlhttp.readyState==4 and xmlhttp.Status==200)
+            // {
+                jsonObj= JSON.parse(xmlhttp.responseText);
+                return jsonObj; 
+            // }
+            }
+            catch(err)
+            {
+                if(err.name=="SyntaxError")
+                {
+                    alert("Missing values");    
+                }
+                if(err.name=="NetworkError")
+                {
+                    alert("Invalid Filename or path");    
+                }
+                // else{
+                //     alert(err.name);    
+                // }
+                
+                return false 
+    
+                }
+
+            }   
+
+        jsonObj = loadJSON(URL);
+        if (jsonObj==false)
+        {    return
+        }
+ 
+        if (window.ActiveXObject) //if IE, simply execute script (due to async prop).
+        {  
+            if (jsonObj.parseError.errorCode != 0) 
+            {
+                var myErr = jsonObj.parseError;
+                generateError(jsonObj);
+                hWin = window.open("", "Error", "height=300,width=340");
+                hWin.document.write(html_text);
+            } 
+            else 
+            {  
+                generateHTML(jsonObj);
+                hWin = window.open("", "Assignment4", "height=800,width=1200");
+                hWin.document.write(html_text);  
+                hWin.document.close();  
+ 
+            } 
+        } 
+        else //else if FF, execute script once JSON object has loaded
+        {  
+            jsonObj.onload=generateHTML(jsonObj);
+            if(jsonObj.onload==false)
+            {
+                // alert("We are here");
+                return;
+            }
+            else
+            {   
+                hWin = window.open("", "Assignment4", "height=800,width=1200");
+                hWin.document.write(html_text);
+                hWin.document.close();  
+
+            }  
+        } 
+    }
+
+
+    function generateHTML(jsonObj)   {
+                root=jsonObj.DocumentElement; 
+                if (!('Row' in jsonObj.Mainline.Table)) 
+                {
+                    alert("Records does not exists");
+                    return false;
+                }
+                html_text="<html><head><title>JSON Parse Result</title></head><body>";
+                html_text+="<table border='1'>"; 
+         
+                html_text+= "<tr>";
+                // for the heading part
+                for(var i=0;i< jsonObj.Mainline.Table.Header.Data.length;i++)
+                {
+                    html_text+= "<th>"+jsonObj.Mainline.Table.Header.Data[i]+"</th>";
+                }           
+
+                html_text+="</tr>";
+                
+
+                for(var i=0; i< jsonObj.Mainline.Table.Row.length;i++)
+                {
+                    var row = jsonObj.Mainline.Table.Row[i];
+                    html_text += "<tr><td>" + jsonObj.Mainline.Table.Row[i].Title +"</td>";
+                    html_text += "<td>" + jsonObj.Mainline.Table.Row[i].Year+"</td>";
+                    if(jsonObj.Mainline.Table.Row[i].Hubs.Hub.length == 0)
+                    {
+                        html_text += "<td></td>";
+                    }
+                    else
+                    {   html_text+="<td><ul>";
+                        for(var j=0; j<jsonObj.Mainline.Table.Row[i].Hubs.Hub.length; ++j)
+                        {
+
+                            if(j == 0){
+                                html_text+="<li><b>"+jsonObj.Mainline.Table.Row[i].Hubs.Hub[j]+"</b></li>";
+                            }
+                            else{
+                                html_text+="<li>"+jsonObj.Mainline.Table.Row[i].Hubs.Hub[j]+"</li></div>";
+                            }
+                        }
+                        html_text+= "</ul></td>";
+                    }
+                    html_text += "<td>" + jsonObj.Mainline.Table.Row[i].Gross +"</td>";
+                    html_text += "<td><a href='" + jsonObj.Mainline.Table.Row[i].HomePage+"'>"+jsonObj.Mainline.Table.Row[i].HomePage+"</a></td>";
+                    html_text += "<td style='text-align: center; height:200px;'><img src='"+jsonObj.Mainline.Table.Row[i].Logo+"' style='width: 200px;max-height: 150px'/></td></tr>";
+                }
+
+                html_text+="</table>";        
+                html_text+="</body></html>";  
+                return html_text
+
+               
+
+}
+
+</script>
+<h2>Enter URL for Highest-grossing films List JSON File</h2>
+<br/>
+<form name="myform" method="POST" id="location" >
+    <input type="text" name="URL" maxlength="255" size="30" value="filmslist3.json" style=" :2px solid #add8f6;" />
+    <br /><br/>
+    <input type="button" name="submit" value="Submit Query" onClick="viewJSON(this.form)" />
+</form>
+
+</body>
+</html>
+
+
